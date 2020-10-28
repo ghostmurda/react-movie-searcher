@@ -1,18 +1,41 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {connect} from 'react-redux';
+import {RootState} from "../store/rootReducer";
+import { ThunkDispatch } from 'redux-thunk';
+import {thunkPopularMovies} from "../store/movies/actions";
 
-const mapStateToProps = () => {
-
+interface StateProps{
+    page: null | number;
+    moviesList: Array<any>;
 }
 
-const mapDispatchToProps = () => {
-
+interface DispatchProps{
+    onGetPopularMovies: () => void;
 }
 
-function MoviesListContainer(props){
+const mapStateToProps = (state: RootState) => {
+    return {
+        page: state.movies.page,
+        moviesList: state.movies.movies
+    }
+}
+
+const mapDispatchToProps = (dispatch: ThunkDispatch<{}, {}, any>) => {
+    return {
+        onGetPopularMovies: () => dispatch(thunkPopularMovies()),
+    }
+}
+
+type Props = StateProps & DispatchProps;
+
+function MoviesListContainer(props: Props){
+    useEffect(() => {
+        props.onGetPopularMovies();
+    }, []);
+
     return (
         <div>
-
+            {props.page};
         </div>
     )
 }

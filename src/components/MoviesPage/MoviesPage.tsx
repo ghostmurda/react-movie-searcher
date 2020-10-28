@@ -2,13 +2,14 @@ import React from "react";
 import {Wrapper} from "./MoviesPage.styles";
 import InputForm from "../InputForm/InputForm";
 import MoviesList from "../MoviesList/MoviesList";
+import MoviesListContainer from "../../containers/MoviesListContainer";
 
 function MoviesPage(){
     return (
         <div className="MoviesPage">
             <Wrapper>
                 <InputForm />
-                <MoviesList />
+                <MoviesListContainer />
             </Wrapper>
         </div>
     )
