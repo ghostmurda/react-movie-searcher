@@ -1,5 +1,6 @@
 import React from "react";
-import {MovieCard, Wrapper} from "./MoviesList.styles";
+import {Wrapper} from "./MoviesList.styles";
+import MovieCard from "../MovieCard/MovieCard";
 
 interface Props{
     page: null | number;

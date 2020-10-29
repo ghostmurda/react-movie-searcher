@@ -9,9 +9,3 @@ export const Wrapper = styled.div`
     flex-wrap: wrap;
     gap: 16px;
 `;
-
-export const MovieCard = styled.div`
-    min-width: 200px;
-    min-height: 300px;
-    background: red;
-`;
