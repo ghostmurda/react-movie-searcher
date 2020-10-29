@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {RootState} from "../store/rootReducer";
 import { ThunkDispatch } from 'redux-thunk';
 import {thunkPopularMovies} from "../store/movies/actions";
+import MoviesList from "../components/MoviesList/MoviesList";
 
 interface StateProps{
     page: null | number;
@@ -35,7 +36,7 @@ function MoviesListContainer(props: Props){
 
     return (
         <div>
-            {props.page};
+            <MoviesList page={props.page} moviesList={props.moviesList} />
         </div>
     )
 }
