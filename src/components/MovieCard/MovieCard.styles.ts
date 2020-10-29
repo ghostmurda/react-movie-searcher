@@ -1,19 +1,26 @@
 import styled from "styled-components";
 
-const baseUrl = 'https://image.tmdb.org/t/p/original/';
-
-interface Props{
-    poster_path: string;
-}
-
 export const Wrapper = styled.div`
-    width: 200px;
-    height: 300px;
-    background: url(${baseUrl}/${(props: Props) => props.poster_path});
-    background-size: cover;
+    width: 400px;
+    height: 600px;
     transition: 0.5s;
+    overflow: hidden;
+    border-radius: 20px;
+    cursor: pointer;
     
     &:hover{
         transform: scale(0.95);
     }
+`;
+
+export const Title = styled.div`
+    font-family: 'Monda', sans-serif;
+    position: relative;
+    top: -604px;
+    z-index: 10;
+    height: 200px;
+    background: linear-gradient(rgba(74, 118, 168, 0.9), rgba(74, 118, 168, 0));
+    font-size: 25px;
+    line-height: 50px;
+    color: white;
 `;

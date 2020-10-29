@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Title = styled.span`
-    font-family: 'Roboto Mono', monospace;
+    font-family: 'Monda', sans-serif;
     font-size: 30px;
     color: white;
     font-weight: 300;

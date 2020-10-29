@@ -1,12 +1,27 @@
 import React from "react";
-import {Wrapper} from "./MovieCard.styles";
+import {Title, Wrapper} from "./MovieCard.styles";
 import {Movie} from "../../store/movies/types";
+import Img from "react-cool-img";
+import loadingImage from '../../img/loader.svg';
+
+const imageBaseUrl = 'https://image.tmdb.org/t/p/original/';
 
 function MovieCard(props: Movie){
     return(
         <div className="MovieCard">
-            <Wrapper poster_path={props.poster_path}>
-                {props.title}
+            <Wrapper>
+                <Img
+                    width="400"
+                    height="600"
+                    placeholder={loadingImage}
+                    src={`${imageBaseUrl}/${props.poster_path}`}
+                    debounce={1000}
+                    alt="Movie"
+                    lazy={true}
+                />
+                <Title>
+                    {props.title}
+                </Title>
             </Wrapper>
         </div>
     )
