@@ -7,9 +7,11 @@ export const Wrapper = styled.div`
     overflow: hidden;
     border-radius: 20px;
     cursor: pointer;
+    box-shadow: 0 20px 30px 0 rgba(1, 1, 1, 0.3);
     
     &:hover{
         transform: scale(0.95);
+        box-shadow: 0 20px 30px 0 rgba(1, 1, 1, 0.7);
     }
 `;
 
