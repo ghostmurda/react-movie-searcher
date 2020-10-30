@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {connect} from 'react-redux';
 import {RootState} from "../store/rootReducer";
 import { ThunkDispatch } from 'redux-thunk';
@@ -11,7 +11,7 @@ interface StateProps{
 }
 
 interface DispatchProps{
-    onGetPopularMovies: () => void;
+    onGetPopularMovies: (page: number) => void;
 }
 
 const mapStateToProps = (state: RootState) => {
@@ -23,15 +23,17 @@ const mapStateToProps = (state: RootState) => {
 
 const mapDispatchToProps = (dispatch: ThunkDispatch<{}, {}, any>) => {
     return {
-        onGetPopularMovies: () => dispatch(thunkPopularMovies()),
+        onGetPopularMovies: (page: number) => dispatch(thunkPopularMovies(page)),
     }
 }
 
 type Props = StateProps & DispatchProps;
 
 function MoviesListContainer(props: Props){
+    const [moviesPage, setPage] = useState(1);
+
     useEffect(() => {
-        props.onGetPopularMovies();
+        props.onGetPopularMovies(moviesPage);
     }, []);
 
     return (

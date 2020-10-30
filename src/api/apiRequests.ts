@@ -7,5 +7,5 @@ const createURL = (endpoint: string, page = 1): string => {
 }
 
 export const getPopularMoviesReq = (page?: number) => axios
-    .get(createURL('/movie/popular'))
+    .get(createURL('/movie/popular', page))
         .then(res => res.data);

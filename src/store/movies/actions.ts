@@ -13,9 +13,9 @@ export const getPopularMoviesCreator = (
     }
 }
 
-export const thunkPopularMovies = (): ThunkAction<Promise<void>, RootState, {}, AnyAction> => async (
+export const thunkPopularMovies = (page: number): ThunkAction<Promise<void>, RootState, {}, AnyAction> => async (
     dispatch
 ) => {
-    let payload: PopularMoviesPayload = await getPopularMoviesReq();
+    let payload: PopularMoviesPayload = await getPopularMoviesReq(page);
     dispatch(getPopularMoviesCreator(payload));
 }
