@@ -11,10 +11,12 @@ export const moviesReducer = (
 ): MoviesState => {
     switch (action.type){
         case GET_POPULAR:{
-            return {
-                page: action.payload.page,
-                movies: action.payload.results
+            let stateCopy = {...state};
+            stateCopy.page = action.payload.page;
+            for (let item of action.payload.results){
+                stateCopy.movies.push(item);
             }
+            return stateCopy;
         }
         default:
             return state;

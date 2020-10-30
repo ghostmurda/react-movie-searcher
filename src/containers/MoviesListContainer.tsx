@@ -1,9 +1,10 @@
-import React, {useEffect, useState} from "react";
+import React, {useCallback, useEffect, useRef} from "react";
 import {connect} from 'react-redux';
 import {RootState} from "../store/rootReducer";
 import { ThunkDispatch } from 'redux-thunk';
 import {thunkPopularMovies} from "../store/movies/actions";
 import MoviesList from "../components/MoviesList/MoviesList";
+import loadingImage from '../img/loader.svg';
 
 interface StateProps{
     page: null | number;
@@ -29,16 +30,43 @@ const mapDispatchToProps = (dispatch: ThunkDispatch<{}, {}, any>) => {
 
 type Props = StateProps & DispatchProps;
 
+const IntersectionObserverOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 1
+}
+
 function MoviesListContainer(props: Props){
-    const [moviesPage, setPage] = useState(1);
+    const loader = useRef(null);
+
+    const loadMore = useCallback((entries) => {
+        const target = entries[0];
+        if (target.isIntersecting){
+            props.page ?
+                props.onGetPopularMovies(props.page + 1)
+                :
+                props.onGetPopularMovies(1)
+        }
+    }, [props])
 
     useEffect(() => {
-        props.onGetPopularMovies(moviesPage);
-    }, []);
+        const observer = new IntersectionObserver(loadMore, IntersectionObserverOptions);
+
+        if (loader && loader.current){
+            //@ts-ignore
+            observer.observe(loader.current);
+        }
+
+        return () => {
+            //@ts-ignore
+            observer.unobserve(loader.current);
+        }
+    }, [loader, loadMore]);
 
     return (
         <div>
             <MoviesList page={props.page} moviesList={props.moviesList} />
+            <img ref={loader} className={"Loader"} src={loadingImage} alt="Loading..." />
         </div>
     )
 }
