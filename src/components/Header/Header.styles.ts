@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
     height: 50px;
     display: flex;
     justify-content: center;
-    box-shadow: 0 30px 30px 0 rgba(1, 1, 1, 0.4);
+    box-shadow: 0 10px 30px 0 rgba(1, 1, 1, 0.7);
     position: fixed;
     z-index: 100;
 `;
