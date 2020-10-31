@@ -16,6 +16,6 @@ describe('movies reducer', () => {
     test('set popular movies in state', async () => {
         const payload: PopularMoviesPayload = await getPopularMoviesReq();
         const action = getPopularMoviesCreator(payload);
-        expect(newState(initialState, action).movies).toBe(payload.results);
+        expect(newState(initialState, action).movies).toStrictEqual(payload.results);
     });
 });
