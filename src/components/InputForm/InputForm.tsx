@@ -9,7 +9,6 @@ function InputForm() {
     }
 
     const onSubmit = (values: Values) => {
-        alert(values.filmName);
         values.filmName = '';
     }
 
