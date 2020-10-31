@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "./components/Header/Header";
-import {BrowserRouter, Route} from "react-router-dom";
+import {BrowserRouter, Redirect, Route} from "react-router-dom";
 import MoviesPage from "./components/MoviesPage/MoviesPage";
 
 function App() {
@@ -8,7 +8,10 @@ function App() {
         <div className="App">
             <BrowserRouter>
                 <Header/>
-                <Route path="/" render={() => <MoviesPage/>}/>
+                <Route path="/">
+                    <Redirect to="/react-movie-searcher" />
+                </Route>
+                <Route exact path="/react-movie-searcher" render={() => <MoviesPage/>}/>
             </BrowserRouter>
         </div>
     )
