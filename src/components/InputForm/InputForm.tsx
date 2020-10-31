@@ -1,5 +1,7 @@
 import React from "react";
 import {Form, Field} from "react-final-form";
+import {Input, StyledForm} from "./InputForm.styles";
+import {ReactComponent as SearchIcon} from "../../img/search.svg";
 
 function InputForm() {
     interface Values {
@@ -15,16 +17,16 @@ function InputForm() {
         <div className="InputForm">
             <Form onSubmit={onSubmit}
                   render={({handleSubmit, form, submitting, pristine, values}) => (
-                      <form onSubmit={handleSubmit}>
+                      <StyledForm onSubmit={handleSubmit}>
                           <Field<string> name="filmName">
                               {({input}) => (
-                                  <input {...input} type="text" placeholder="Search"/>
+                                  <Input {...input} type="text" placeholder="Search movie"/>
                               )}
                           </Field>
                           <button type="submit" disabled={submitting}>
-                              Search
+                              <SearchIcon />
                           </button>
-                      </form>
+                      </StyledForm>
                   )}
             />
         </div>
