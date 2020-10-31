@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
     position: fixed;
     z-index: 100;
     
-    @media (max-width: 590px){
+    @media (max-width: 848px){
         justify-content: space-around;
     }
 `;
@@ -24,11 +24,11 @@ export const Title = styled.span`
     font-weight: 300;
     margin-right: 290px;
     
-    @media (max-width: 590px){
+    @media (max-width: 848px){
         margin-right: 0px;
     }
     
-    @media (max-width: 510px){
+    @media (max-width: 527px){
         font-size: 20px;
         line-height: 20px;
     }
