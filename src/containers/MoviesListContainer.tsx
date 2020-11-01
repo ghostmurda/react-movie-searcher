@@ -50,16 +50,17 @@ function MoviesListContainer(props: Props){
     }, [props])
 
     useEffect(() => {
+        let currentLoader = loader.current;
         const observer = new IntersectionObserver(loadMore, IntersectionObserverOptions);
 
         if (loader && loader.current){
             //@ts-ignore
-            observer.observe(loader.current);
+            observer.observe(currentLoader);
         }
 
         return () => {
             //@ts-ignore
-            observer.unobserve(loader.current);
+            observer.unobserve(currentLoader);
         }
     }, [loader, loadMore]);
 
