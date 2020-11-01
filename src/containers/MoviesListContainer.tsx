@@ -2,21 +2,26 @@ import React, {useCallback, useEffect, useRef} from "react";
 import {connect} from 'react-redux';
 import {RootState} from "../store/rootReducer";
 import { ThunkDispatch } from 'redux-thunk';
-import {thunkPopularMovies} from "../store/movies/actions";
+import {thunkPopularMovies, thunkSearchMovies} from "../store/movies/actions";
 import MoviesList from "../components/MoviesList/MoviesList";
 import loadingImage from '../img/loader.svg';
 
 interface StateProps{
+    query: null | string;
+    type: 'popular' | 'search' | null;
     page: null | number;
     moviesList: Array<any>;
 }
 
 interface DispatchProps{
     onGetPopularMovies: (page: number) => void;
+    onGetSearchMovies: (page: number, query: string) => void;
 }
 
 const mapStateToProps = (state: RootState) => {
     return {
+        query: state.movies.query,
+        type: state.movies.type,
         page: state.movies.page,
         moviesList: state.movies.movies
     }
@@ -25,6 +30,7 @@ const mapStateToProps = (state: RootState) => {
 const mapDispatchToProps = (dispatch: ThunkDispatch<{}, {}, any>) => {
     return {
         onGetPopularMovies: (page: number) => dispatch(thunkPopularMovies(page)),
+        onGetSearchMovies: (page: number, query: string) => dispatch(thunkSearchMovies(page, query))
     }
 }
 
@@ -42,10 +48,31 @@ function MoviesListContainer(props: Props){
     const loadMore = useCallback((entries) => {
         const target = entries[0];
         if (target.isIntersecting){
-            props.page ?
-                props.onGetPopularMovies(props.page + 1)
-                :
-                props.onGetPopularMovies(1)
+            switch (props.type){
+                case "popular":{
+                    props.page ?
+                        props.onGetPopularMovies(props.page + 1)
+                        :
+                        props.onGetPopularMovies(1)
+                    break
+                }
+                case "search":{
+                    props.page ?
+                        props.onGetSearchMovies(props.page + 1, props.query ? props.query : '')
+                        :
+                        props.onGetSearchMovies(1, props.query ? props.query : '')
+                    break
+                }
+                case null:{
+                    if (!props.query){
+                        props.page ?
+                            props.onGetPopularMovies(props.page + 1)
+                            :
+                            props.onGetPopularMovies(1)
+                    }
+                    break
+                }
+            }
         }
     }, [props])
 

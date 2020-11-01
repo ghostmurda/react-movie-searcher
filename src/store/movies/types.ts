@@ -1,6 +1,7 @@
 export const GET_POPULAR = 'movies/GET_POPULAR';
 export const SEARCH = 'movies/SEARCH';
 export const CLEAR = 'movies/CLEAR';
+export const QUERY = 'movies/QUERY';
 
 export interface Movie{
     popularity: number;
@@ -20,8 +21,8 @@ export interface Movie{
 }
 
 export interface MoviesState{
-    type: 'popular' | 'search' | 'none';
-    prevType: 'popular' | 'search' | 'none';
+    query: null | string;
+    type: 'popular' | 'search' | null;
     page: number | null;
     movies: Array<Movie>;
 }
@@ -47,4 +48,14 @@ interface ClearMoviesAction{
     type: typeof CLEAR;
 }
 
-export type MoviesActionTypes = GetPopularMoviesAction | GetSearchMoviesAction | ClearMoviesAction;
+interface setSearchQuery{
+    type: typeof QUERY;
+    payload: string;
+}
+
+
+export type MoviesActionTypes =
+    GetPopularMoviesAction |
+    GetSearchMoviesAction |
+    ClearMoviesAction |
+    setSearchQuery;

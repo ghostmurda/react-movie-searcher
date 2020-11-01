@@ -1,4 +1,4 @@
-import {CLEAR, GET_POPULAR, MoviesActionTypes, MoviesPayload, SEARCH} from "./types";
+import {CLEAR, GET_POPULAR, MoviesActionTypes, MoviesPayload, QUERY, SEARCH} from "./types";
 import {ThunkAction} from "redux-thunk";
 import {AnyAction} from 'redux'
 import {RootState} from "../rootReducer";
@@ -28,6 +28,15 @@ export const clearMoviesCreator = (): MoviesActionTypes => {
     }
 }
 
+export const setSearchQueryCreator = (
+    payload: string
+): MoviesActionTypes => {
+    return {
+        type: QUERY,
+        payload
+    }
+}
+
 export const thunkPopularMovies = (page: number): ThunkAction<Promise<void>, RootState, {}, AnyAction> => async (
     dispatch
 ) => {
@@ -39,6 +48,9 @@ export const thunkSearchMovies = (page: number, query: string): ThunkAction<Prom
     dispatch
 ) => {
     let payload: MoviesPayload = await getSearchMoviesReq(page, query);
-    dispatch(clearMoviesCreator());
+    if (page === 1){
+        dispatch(clearMoviesCreator());
+    }
     dispatch(getSearchMoviesCreator(payload));
+    dispatch(setSearchQueryCreator(query));
 }
