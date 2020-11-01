@@ -78,6 +78,10 @@ function MoviesListContainer(props: Props){
     }, [props])
 
     useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [props.query])
+
+    useEffect(() => {
         let currentLoader = loader.current;
         const observer = new IntersectionObserver(loadMore, IntersectionObserverOptions);
 
