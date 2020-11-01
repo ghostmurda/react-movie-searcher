@@ -39,5 +39,6 @@ export const thunkSearchMovies = (page: number, query: string): ThunkAction<Prom
     dispatch
 ) => {
     let payload: MoviesPayload = await getSearchMoviesReq(page, query);
+    dispatch(clearMoviesCreator());
     dispatch(getSearchMoviesCreator(payload));
 }
