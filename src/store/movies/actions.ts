@@ -1,4 +1,4 @@
-import {GET_POPULAR, MoviesActionTypes, MoviesPayload, SEARCH} from "./types";
+import {CLEAR, GET_POPULAR, MoviesActionTypes, MoviesPayload, SEARCH} from "./types";
 import {ThunkAction} from "redux-thunk";
 import {AnyAction} from 'redux'
 import {RootState} from "../rootReducer";
@@ -19,6 +19,12 @@ export const getSearchMoviesCreator = (
     return {
         type: SEARCH,
         payload
+    }
+}
+
+export const clearMoviesCreator = (): MoviesActionTypes => {
+    return {
+        type: CLEAR
     }
 }
 

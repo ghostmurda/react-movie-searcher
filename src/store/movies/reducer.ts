@@ -1,4 +1,4 @@
-import {GET_POPULAR, MoviesActionTypes, MoviesState, SEARCH} from "./types";
+import {CLEAR, GET_POPULAR, MoviesActionTypes, MoviesState, SEARCH} from "./types";
 
 let initialState: MoviesState = {
     page: null,
@@ -25,6 +25,9 @@ export const moviesReducer = (
                 stateCopy.movies.push(item);
             }
             return stateCopy;
+        }
+        case CLEAR: {
+            return {...state, movies: []}
         }
         default:
             return state;
