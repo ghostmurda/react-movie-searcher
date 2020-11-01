@@ -1,4 +1,4 @@
-import {MoviesActionTypes, MoviesState, PopularMoviesPayload} from "../movies/types";
+import {MoviesActionTypes, MoviesState, MoviesPayload} from "../movies/types";
 import {moviesReducer} from "../movies/reducer";
 import {getPopularMoviesCreator} from "../movies/actions";
 import {getPopularMoviesReq} from "../../api/apiRequests";
@@ -14,7 +14,7 @@ let newState = (state: MoviesState, action: MoviesActionTypes) => {
 
 describe('movies reducer', () => {
     test('set popular movies in state', async () => {
-        const payload: PopularMoviesPayload = await getPopularMoviesReq();
+        const payload: MoviesPayload = await getPopularMoviesReq();
         const action = getPopularMoviesCreator(payload);
         expect(newState(initialState, action).movies).toStrictEqual(payload.results);
     });

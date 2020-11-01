@@ -22,7 +22,7 @@ export interface MoviesState{
     movies: Array<Movie>;
 }
 
-export interface PopularMoviesPayload{
+export interface MoviesPayload{
     page: number;
     total_results: string;
     total_pages: string;
@@ -31,7 +31,7 @@ export interface PopularMoviesPayload{
 
 interface GetPopularMoviesAction{
     type: typeof GET_POPULAR;
-    payload: PopularMoviesPayload;
+    payload: MoviesPayload;
 }
 
 export type MoviesActionTypes = GetPopularMoviesAction;

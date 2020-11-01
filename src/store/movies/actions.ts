@@ -1,11 +1,11 @@
-import {GET_POPULAR, MoviesActionTypes, PopularMoviesPayload} from "./types";
+import {GET_POPULAR, MoviesActionTypes, MoviesPayload} from "./types";
 import {ThunkAction} from "redux-thunk";
 import { AnyAction } from 'redux'
 import {RootState} from "../rootReducer";
 import {getPopularMoviesReq} from "../../api/apiRequests";
 
 export const getPopularMoviesCreator = (
-    payload: PopularMoviesPayload
+    payload: MoviesPayload
 ): MoviesActionTypes => {
     return {
         type: GET_POPULAR,
@@ -16,6 +16,6 @@ export const getPopularMoviesCreator = (
 export const thunkPopularMovies = (page: number): ThunkAction<Promise<void>, RootState, {}, AnyAction> => async (
     dispatch
 ) => {
-    let payload: PopularMoviesPayload = await getPopularMoviesReq(page);
+    let payload: MoviesPayload = await getPopularMoviesReq(page);
     dispatch(getPopularMoviesCreator(payload));
 }
