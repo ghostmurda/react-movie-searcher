@@ -1,6 +1,6 @@
 import React from 'react';
 import {Title, Wrapper} from "./Header.styles";
-import InputForm from "../InputForm/InputForm";
+import InputFormContainer from "../../containers/InputFormContainer";
 
 function Header(){
     return (
@@ -9,7 +9,7 @@ function Header(){
                 <Title>
                     movie searcher
                 </Title>
-                <InputForm />
+                <InputFormContainer />
             </Wrapper>
         </div>
     )
