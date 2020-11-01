@@ -2,6 +2,7 @@ import {CLEAR, GET_POPULAR, MoviesActionTypes, MoviesState, SEARCH} from "./type
 
 let initialState: MoviesState = {
     type: 'none',
+    prevType: 'none',
     page: null,
     movies: []
 }
@@ -30,7 +31,23 @@ export const moviesReducer = (
             return stateCopy;
         }
         case CLEAR: {
-            return {...state, type: 'none', movies: []}
+            let stateCopy = {...state};
+            switch (state.type){
+                case "popular": {
+                    stateCopy.prevType = 'popular';
+                    break
+                }
+                case "search": {
+                    stateCopy.prevType = 'search';
+                    break
+                }
+                default:
+                    stateCopy.prevType = 'none';
+                    break
+            }
+            stateCopy.movies = [];
+            stateCopy.type = 'none';
+            return stateCopy;
         }
         default:
             return state;

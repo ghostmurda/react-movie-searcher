@@ -21,6 +21,7 @@ export interface Movie{
 
 export interface MoviesState{
     type: 'popular' | 'search' | 'none';
+    prevType: 'popular' | 'search' | 'none';
     page: number | null;
     movies: Array<Movie>;
 }

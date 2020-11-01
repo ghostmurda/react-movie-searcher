@@ -5,6 +5,7 @@ import {getPopularMoviesReq, getSearchMoviesReq} from "../../api/apiRequests";
 
 const initialState: MoviesState = {
     type: 'none',
+    prevType: 'none',
     page: 1,
     movies: []
 }
