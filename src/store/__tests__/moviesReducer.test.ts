@@ -4,6 +4,7 @@ import {clearMoviesCreator, getPopularMoviesCreator, getSearchMoviesCreator} fro
 import {getPopularMoviesReq, getSearchMoviesReq} from "../../api/apiRequests";
 
 const initialState: MoviesState = {
+    type: 'none',
     page: 1,
     movies: []
 }
