@@ -4,6 +4,7 @@ import {RootState} from "../store/rootReducer";
 import {thunkSearchMovies} from "../store/movies/actions";
 import InputForm from "../components/InputForm/InputForm";
 import {ThunkDispatch} from "redux-thunk";
+import {getPage} from "../store/movies/selectors";
 
 interface StateProps{
     page: number | null;
@@ -15,7 +16,7 @@ interface DispatchProps{
 
 const mapStateToProps = (state: RootState) => {
     return {
-        page: state.movies.page
+        page: getPage(state)
     }
 }
 

@@ -5,6 +5,7 @@ import { ThunkDispatch } from 'redux-thunk';
 import {thunkPopularMovies, thunkSearchMovies} from "../store/movies/actions";
 import MoviesList from "../components/MoviesList/MoviesList";
 import loadingImage from '../img/loader.svg';
+import {getMoviesList, getPage, getQuery, getType} from "../store/movies/selectors";
 
 interface StateProps{
     query: null | string;
@@ -20,10 +21,10 @@ interface DispatchProps{
 
 const mapStateToProps = (state: RootState) => {
     return {
-        query: state.movies.query,
-        type: state.movies.type,
-        page: state.movies.page,
-        moviesList: state.movies.movies
+        query: getQuery(state),
+        type: getType(state),
+        page: getPage(state),
+        moviesList: getMoviesList(state)
     }
 }
 
