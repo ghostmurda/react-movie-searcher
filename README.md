@@ -10,6 +10,7 @@ This is <a href="https://ghostmurda.github.io/react-movie-searcher/">movie searc
     <li>redux-thunk</li>
     <li>react-router</li>
     <li>react-final-form</li>
+    <li>react-cool-img</li>
     <li>styled-components</li>
     <li>axios</li>
 </ul>
