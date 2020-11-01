@@ -1,4 +1,21 @@
-# Getting Started with Create React App
+https://ghostmurda.github.io/react-movie-searcher/
+## Description
+
+This is <a href="https://ghostmurda.github.io/react-movie-searcher/">movie searcher</a> single-page application made using:
+<ul>
+    <li>TypeScript</li>
+    <li>React</li>
+    <li>Redux</li>
+    <li>react-redux</li>
+    <li>redux-thunk</li>
+    <li>react-router</li>
+    <li>react-final-form</li>
+    <li>styled-components</li>
+    <li>axios</li>
+</ul>
+For now here is only infinite scroll function.
+
+##
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
