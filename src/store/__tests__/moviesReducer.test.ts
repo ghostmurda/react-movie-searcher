@@ -1,7 +1,7 @@
 import {MoviesActionTypes, MoviesState, MoviesPayload} from "../movies/types";
 import {moviesReducer} from "../movies/reducer";
-import {getPopularMoviesCreator} from "../movies/actions";
-import {getPopularMoviesReq} from "../../api/apiRequests";
+import {getPopularMoviesCreator, getSearchMoviesCreator} from "../movies/actions";
+import {getPopularMoviesReq, getSearchMoviesReq} from "../../api/apiRequests";
 
 const initialState: MoviesState = {
     page: 1,
@@ -16,6 +16,11 @@ describe('movies reducer', () => {
     test('set popular movies in state', async () => {
         const payload: MoviesPayload = await getPopularMoviesReq();
         const action = getPopularMoviesCreator(payload);
+        expect(newState(initialState, action).movies).toStrictEqual(payload.results);
+    });
+    test('set searched movies in state', async () => {
+        const payload: MoviesPayload = await getSearchMoviesReq(1,'game');
+        const action = getSearchMoviesCreator(payload);
         expect(newState(initialState, action).movies).toStrictEqual(payload.results);
     });
 });

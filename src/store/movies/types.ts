@@ -1,4 +1,5 @@
 export const GET_POPULAR = 'movies/GET_POPULAR';
+export const SEARCH = 'movies/SEARCH';
 
 export interface Movie{
     popularity: number;
@@ -34,4 +35,9 @@ interface GetPopularMoviesAction{
     payload: MoviesPayload;
 }
 
-export type MoviesActionTypes = GetPopularMoviesAction;
+interface GetSearchMoviesAction{
+    type: typeof SEARCH;
+    payload: MoviesPayload;
+}
+
+export type MoviesActionTypes = GetPopularMoviesAction | GetSearchMoviesAction;
