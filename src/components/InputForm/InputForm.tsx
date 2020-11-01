@@ -15,7 +15,6 @@ function InputForm(props: Props) {
 
     const onSubmit = (values: Values) => {
         props.onGetSearchMovies(1, values.filmName);
-        values.filmName = '';
     }
 
     return (
