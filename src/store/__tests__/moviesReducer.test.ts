@@ -18,13 +18,11 @@ test('set popular movies in state', async () => {
     expect(newState(initialState, action).movies).toStrictEqual(payload.results);
 });
 
-test('set searched movies in state', async () => {
-    const action = clearMoviesCreator();
-    newState(initialState, action);
-    const payload: MoviesPayload = await getSearchMoviesReq(1, 'game');
-    const action2 = getSearchMoviesCreator(payload);
-    expect(newState(initialState, action2).movies).toStrictEqual(payload.results);
-});
+// test('set searched movies in state', async () => {
+//     const payload: MoviesPayload = await getSearchMoviesReq(1, 'game');
+//     const action = getSearchMoviesCreator(payload);
+//     expect(newState(initialState, action).movies).toStrictEqual(payload.results);
+// });
 
 test('clear movies in state', async () => {
     const payload: MoviesPayload = await getSearchMoviesReq(1, 'game');
