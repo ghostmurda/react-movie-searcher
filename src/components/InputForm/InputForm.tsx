@@ -5,7 +5,6 @@ import {ReactComponent as SearchIcon} from "../../img/search.svg";
 
 interface Props{
     onGetSearchMovies: (page: number, query: string) => void;
-    page: number | null;
 }
 
 function InputForm(props: Props) {
