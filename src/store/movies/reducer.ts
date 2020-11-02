@@ -13,22 +13,20 @@ export const moviesReducer = (
 ): MoviesState => {
     switch (action.type){
         case GET_POPULAR:{
-            let stateCopy = {...state};
-            stateCopy.type = 'popular';
-            stateCopy.page = action.payload.page;
-            for (let item of action.payload.results){
-                stateCopy.movies.push(item);
+            return {
+                ...state,
+                type: 'popular',
+                page: action.payload.page,
+                movies: state.movies.concat(action.payload.results)
             }
-            return stateCopy;
         }
         case SEARCH:{
-            let stateCopy = {...state};
-            stateCopy.type = 'search';
-            stateCopy.page = action.payload.page;
-            for (let item of action.payload.results){
-                stateCopy.movies.push(item);
+            return {
+                ...state,
+                type: 'search',
+                page: action.payload.page,
+                movies: state.movies.concat(action.payload.results)
             }
-            return stateCopy;
         }
         case CLEAR: {
             return {...state, page: null, type: null, movies: [], query: null}
