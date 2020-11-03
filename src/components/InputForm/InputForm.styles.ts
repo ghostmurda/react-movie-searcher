@@ -6,6 +6,8 @@ export const Input = styled.input`
     border: 0px;
     font-size: 17px;
     color: #8FADC8;
+    max-width: 150px;
+    margin-left: 37px;
     
     &::placeholder{
         color: #8FADC8;
@@ -13,16 +15,17 @@ export const Input = styled.input`
 `;
 
 export const StyledForm = styled.form`
-    min-width: 300px;
+    min-width: 270px;
     background: #224B7A;
     border-radius: 20px;
     display: flex;
     padding: 5px;
-    height: 50%;
+    height: 25px;
     align-items: center;
+    justify-content: space-between;
     
-    & *{
-        margin-left: 15px;
+    & img{
+        position: fixed;
     }
     
     & button{
