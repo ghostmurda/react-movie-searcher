@@ -12,6 +12,11 @@ export const Input = styled.input`
     &::placeholder{
         color: #8FADC8;
     }
+    
+    @media (max-width: 527px){
+        max-width: 100px;
+        font-size: 15px;
+    }
 `;
 
 export const StyledForm = styled.form`
@@ -33,5 +38,9 @@ export const StyledForm = styled.form`
         outline: 0;
         border: 0px;
         cursor: pointer;
+    }
+    
+    @media (max-width: 527px){
+        min-width: 200px;
     }
 `;

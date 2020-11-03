@@ -1,17 +1,17 @@
 import React from 'react';
-import {Title, Wrapper} from "./Header.styles";
+import {HeaderStyled, Title, Wrapper} from "./Header.styles";
 import InputFormContainer from "../../containers/InputFormContainer";
 
 function Header(){
     return (
-        <div className="Header">
+        <HeaderStyled>
             <Wrapper>
                 <Title>
                     movie searcher
                 </Title>
                 <InputFormContainer />
             </Wrapper>
-        </div>
+        </HeaderStyled>
     )
 }
 

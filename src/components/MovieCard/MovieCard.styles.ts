@@ -13,6 +13,11 @@ export const Wrapper = styled.div`
         transform: scale(0.95);
         box-shadow: 0 20px 30px 0 rgba(1, 1, 1, 0.7);
     }
+    
+    @media (max-width: 400px){
+        width: 350px;
+        height: 550px;
+    }
 `;
 
 export const Title = styled.div`
@@ -25,4 +30,8 @@ export const Title = styled.div`
     font-size: 25px;
     line-height: 50px;
     color: white;
+    
+    @media (max-width: 400px){
+        top: -554px;
+    }
 `;

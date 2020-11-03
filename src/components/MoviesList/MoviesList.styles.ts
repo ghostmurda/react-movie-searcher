@@ -8,4 +8,8 @@ export const Wrapper = styled.div`
     align-content: flex-start;
     flex-wrap: wrap;
     gap: 16px;
+    
+    @media (max-width: 527px){
+        padding: 12px;
+    }
 `;

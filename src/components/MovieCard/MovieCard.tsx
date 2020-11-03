@@ -12,8 +12,8 @@ function MovieCard(props: Movie){
         <div className="MovieCard">
             <Wrapper>
                 <Img
-                    width="400"
-                    height="600"
+                    width={(window.innerWidth <= 400) ? '350' : '400'}
+                    height={(window.innerWidth <= 400) ? '550' : '600'}
                     placeholder={loadingImage}
                     src={`${imageBaseUrl}/${props.poster_path}`}
                     error={errorImage}
